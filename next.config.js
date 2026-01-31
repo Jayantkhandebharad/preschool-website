@@ -3,6 +3,9 @@ const nextConfig = {
   output: 'export',
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
+  distDir: 'out',
+  reactStrictMode: false,
+  swcMinify: true,
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -15,6 +18,9 @@ const nextConfig = {
         hostname: 'plus.unsplash.com',
       },
     ],
+  },
+  experimental: {
+    esmExternals: false,
   },
 }
 
