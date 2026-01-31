@@ -23,7 +23,7 @@ const Footer = () => {
   const socialLinks = [
     { href: '#', icon: Facebook, label: 'Facebook' },
     { href: '#', icon: Instagram, label: 'Instagram' },
-    { href: '#', icon: Youtube, label: 'YouTube' },
+    { href: 'https://www.youtube.com/@kidsartguru', icon: Youtube, label: 'YouTube' },
   ]
 
   return (
@@ -55,6 +55,8 @@ const Footer = () => {
                 <motion.a
                   key={social.label}
                   href={social.href}
+                  target={social.href !== '#' ? '_blank' : undefined}
+                  rel={social.href !== '#' ? 'noopener noreferrer' : undefined}
                   className="w-11 h-11 bg-orchid/20 hover:bg-orchid rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 min-h-[44px]"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
