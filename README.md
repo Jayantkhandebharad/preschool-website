@@ -179,19 +179,54 @@ Currently uses Unsplash placeholder images. To use your own images:
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+### Deploy to Hostinger (static hosting)
+
+The site is built as a **static export** (`out` folder). Use these steps to deploy on Hostinger:
+
+1. **Build the site** (on your computer):
+   ```bash
+   npm run build
+   ```
+   This creates/updates the `out` folder with static HTML, CSS, and JS.
+
+2. **Log in to Hostinger**  
+   Go to [hpanel.hostinger.com](https://hpanel.hostinger.com) and sign in.
+
+3. **Open File Manager**  
+   In the dashboard, open **Hosting** → your domain → **File Manager**.
+
+4. **Go to the web root**  
+   Open the **`public_html`** folder (this is your site’s root).
+
+5. **Clear old site files (optional)**  
+   If you’ve deployed before, delete the existing files inside `public_html` (or move them elsewhere) so only the new build is served.
+
+6. **Upload the build**  
+   Upload **everything inside** the project’s `out` folder into `public_html`:
+   - Upload the **contents** of `out` (not the `out` folder itself).
+   - So `public_html` should contain: `index.html`, `404.html`, `.nojekyll`, and the folders `_next`, `about`, `blogs`, `contact`, `gallery`, `programs`, `404`.
+
+7. **Upload method**  
+   - **File Manager**: Use “Upload” and select all files and folders from `out`.  
+   - **FTP**: Connect with an FTP client (e.g. FileZilla), go to `public_html`, and upload the contents of `out`.  
+   - **ZIP**: Zip the contents of `out`, upload the ZIP to `public_html`, then use “Extract” in File Manager.
+
+8. **Check the site**  
+   Visit your domain (e.g. `https://yourdomain.com`). The homepage and all routes (About, Programs, Blogs, Gallery, Contact) should load.
+
+**To update the site later:** run `npm run build` again, then re-upload the contents of the `out` folder to `public_html`, replacing the old files.
+
+---
+
+### Vercel (alternative)
 
 1. Push your code to GitHub/GitLab/Bitbucket
 2. Import your repository on [Vercel](https://vercel.com)
 3. Deploy with zero configuration
 
-### Other Platforms
+### Other platforms
 
-The app can be deployed on any platform that supports Next.js:
-- Netlify
-- AWS Amplify
-- Railway
-- DigitalOcean App Platform
+The static export can be deployed on any static host (Netlify, AWS Amplify, GitHub Pages, etc.). For Node.js hosts (Railway, DigitalOcean App Platform), you can run `next start` instead of using the `out` folder.
 
 ## 📊 Performance
 
